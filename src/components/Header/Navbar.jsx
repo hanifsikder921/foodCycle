@@ -4,6 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading";
 import { useContext } from "react";
+import Logo from '../../assets/logo.png'
 
 const Navbar = () => {
   const { user, logoutUser, loading } = useContext(AuthContext);
@@ -92,7 +93,7 @@ const Navbar = () => {
   return loading ? (
     <Loading />
   ) : (
-    <div className="navbar">
+    <div className="navbar w-11/12 mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -119,7 +120,9 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">FoodCycle </a>
+        <div>
+          <img className="w-25" src={Logo} alt="" />
+        </div>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menu}</ul>

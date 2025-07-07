@@ -1,34 +1,21 @@
-import React from 'react';
-import { Outlet } from 'react-router';
-import Navbar from '../components/Header/Navbar';
-
-
+import React from "react";
+import { Outlet } from "react-router";
+import Navbar from "../components/Header/Navbar";
 
 const MainLayout = () => {
-    return (
-        <div>
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="border-b border-base-300 bg-orange-50">
+        <Navbar />
+      </header>
 
-            <header>
-               <Navbar></Navbar>
-            </header>
-
-
-            <main>
-
-                {/* Dynamic Change Element */}
-                <section>
-                    <Outlet></Outlet>
-                </section>
-
-            </main>
-
-
-
-
-
-
-        </div>
-    );
+      <main className=" w-11/12 mx-auto flex-grow md:my-8 my-2">
+        <section>
+          <Outlet />
+        </section>
+      </main>
+    </div>
+  );
 };
 
 export default MainLayout;
