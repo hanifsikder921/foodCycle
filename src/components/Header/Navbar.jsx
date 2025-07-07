@@ -1,13 +1,13 @@
 // import React, { useContext, useEffect, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
-import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading";
-import { useContext } from "react";
-import Logo from '../../assets/logo.png'
+import Logo from "../../assets/logo.png";
+import useAuth from "../../hooks/useAuth";
+import FoodCycleLogo from "../shared/FoodCycleLogo";
 
 const Navbar = () => {
-  const { user, logoutUser, loading } = useContext(AuthContext);
+  const { user, logOut, loading } = useAuth();
 
   const navigate = useNavigate();
   // const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -25,7 +25,7 @@ const Navbar = () => {
       cancelButtonText: "No, stay logged in",
     }).then((result) => {
       if (result.isConfirmed) {
-        logoutUser()
+        logOut()
           .then(() => {
             localStorage.removeItem("token");
             Swal.fire(
@@ -65,6 +65,7 @@ const Navbar = () => {
         { path: "/", label: "Home" },
         { path: "/about", label: "About" },
         { path: "/contact", label: "contact" },
+        ...(user ? [{ path: "/dashboard", label: "Dashboard" }] : []),
       ].map(({ path, label }) => (
         <NavLink
           key={path}
@@ -120,9 +121,7 @@ const Navbar = () => {
             {menu}
           </ul>
         </div>
-        <div>
-          <img className="w-25" src={Logo} alt="" />
-        </div>
+        <FoodCycleLogo />
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{menu}</ul>
