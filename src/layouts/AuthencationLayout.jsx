@@ -15,11 +15,11 @@ const AuthencationLayout = () => {
         </Link>
       </div>
 
-      <div className="flex justify-around items-center rounded-lg shadow-2xl border border-gray-200">
+      <div className="flex justify-around items-center rounded-lg md:shadow-2xl border border-gray-200">
         <section className="flex-1">
           <Outlet></Outlet>
         </section>
-        <section className="flex-1">
+        <section className="flex-1 hidden md:flex ">
           <img className="w-7/12 mx-auto" src={Eating} alt="" />
         </section>
       </div>

@@ -33,7 +33,7 @@ const Navbar = () => {
               "You have been logged out successfully.",
               "success"
             );
-            navigate("/auth/login");
+            navigate("/login");
           })
           .catch((error) => {
             Swal.fire("Error", error.message, "error");
@@ -65,6 +65,7 @@ const Navbar = () => {
         { path: "/", label: "Home" },
         { path: "/about", label: "About" },
         { path: "/contact", label: "contact" },
+        ...(user ? [{ path: "/allDonation", label: "All Donation" }] : []),
         ...(user ? [{ path: "/dashboard", label: "Dashboard" }] : []),
       ].map(({ path, label }) => (
         <NavLink
@@ -72,8 +73,8 @@ const Navbar = () => {
           to={path}
           className={({ isActive }) =>
             `font-semibold transition-colors duration-300 text-base-content relative z-10 ${
-              isActive ? "px-4 py-2 rounded-md border" : " hover:text-blue-500"
-            }`
+              isActive ? "px-4 py-2 rounded-md border dark:border-amber-300" : " hover:text-blue-500"
+            } dark:text-amber-50`
           }
         >
           {label}
@@ -84,7 +85,7 @@ const Navbar = () => {
           Logout
         </button>
       ) : (
-        <Link to="/auth/login" className="btn btn-primary">
+        <Link to="/login" className="btn btn-primary">
           Login
         </Link>
       )}
@@ -105,13 +106,13 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
+              
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
@@ -124,7 +125,7 @@ const Navbar = () => {
         <FoodCycleLogo />
       </div>
       <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{menu}</ul>
+        <ul className="menu menu-horizontal px-1 ">{menu}</ul>
       </div>
     </div>
   );

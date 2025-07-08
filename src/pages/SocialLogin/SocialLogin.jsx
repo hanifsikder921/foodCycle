@@ -2,6 +2,7 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
 import useAxios from "../../hooks/useAxios";
+import Swal from "sweetalert2";
 
 const SocialLogin = () => {
   const { signInWithGoogle } = useAuth();
@@ -27,6 +28,11 @@ const SocialLogin = () => {
 
         const res = await axiosInstance.post("/users", userInfo);
         console.log("user update info", res.data);
+        Swal.fire({
+          title: "Sign in Successful!",
+          text: "You have successfully signed in with Google.",
+          icon: "success"
+        });
 
         navigate(from);
       })

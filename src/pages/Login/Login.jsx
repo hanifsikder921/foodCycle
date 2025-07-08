@@ -50,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center px-4 py-10 w-7/12 mx-auto">
+    <div className="flex items-center justify-center px-4 py-10 md:w-7/12 mx-auto">
       <div className="mt-7 rounded-xl shadow shadow-gray-200 w-full ">
         <div className="p-4 sm:p-7">
           <div className="text-center">
@@ -59,7 +59,7 @@ const Login = () => {
               Don't have an account yet?
               <Link
                 className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium ml-1"
-                to="/auth/register"
+                to="/register"
               >
                 Sign up here
               </Link>

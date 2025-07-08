@@ -74,14 +74,14 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center p-4">
-      <div className="shadow shadow-gray-200 rounded-xl w-7/12 mx-auto">
+      <div className="shadow shadow-gray-200 rounded-xl md:w-7/12 mx-auto">
         <div className="p-4 sm:p-7">
           <div className="text-center">
             <h1 className="block text-2xl font-bold">Sign up</h1>
             <p className="mt-2 text-sm">
               Already have an account?
               <Link
-                to="/auth/login"
+                to="/login"
                 className="text-blue-600 decoration-2 hover:underline focus:outline-hidden focus:underline font-medium ml-1"
               >
                 Sign in here

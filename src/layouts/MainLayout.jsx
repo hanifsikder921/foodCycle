@@ -5,7 +5,7 @@ import Navbar from "../components/Header/Navbar";
 const MainLayout = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="border-b border-base-300 bg-orange-50">
+      <header className="border-b border-base-300  dark:bg-gray-800">
         <Navbar />
       </header>
 
