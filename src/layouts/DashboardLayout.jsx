@@ -1,5 +1,8 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router";
+import { TbTruckDelivery } from "react-icons/tb";
+import { GiReceiveMoney } from "react-icons/gi";
+import { ImUserCheck } from "react-icons/im";
 import {
   FaHome,
   FaBoxOpen,
@@ -45,7 +48,7 @@ const DashboardLayout = () => {
       </header>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col">
+        <div className="drawer-content flex flex-col ">
           {/* Navbar */}
           <div className="navbar bg-base-300 w-full lg:hidden">
             <div className="flex-none ">
@@ -72,7 +75,9 @@ const DashboardLayout = () => {
             <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
           </div>
           {/* Page content here */}
-          <Outlet></Outlet>
+          <div className="p-5 dark:bg-gray-700 min-h-full">
+            <Outlet></Outlet>
+          </div>
           {/* Page content here */}
         </div>
         <div className="drawer-side">
@@ -81,7 +86,7 @@ const DashboardLayout = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+          <ul className="menu bg-base-200 dark:bg-gray-800 text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
             <div className="md:hidden">
               <FoodCycleLogo />
@@ -246,7 +251,7 @@ const DashboardLayout = () => {
                     to="/dashboard/charity-profile"
                     className={navLinkClass}
                   >
-                    <FaUserShield className="inline-block mr-2" />
+                    <ImUserCheck className="inline-block mr-2" />
                     Charity Profile
                   </NavLink>
 
@@ -256,7 +261,7 @@ const DashboardLayout = () => {
                   </NavLink>
 
                   <NavLink to="/dashboard/my-pickups" className={navLinkClass}>
-                    <FaCheckCircle className="inline-block mr-2" />
+                    <TbTruckDelivery className="inline-block mr-2" />
                     My Pickups
                   </NavLink>
 
@@ -264,7 +269,7 @@ const DashboardLayout = () => {
                     to="/dashboard/received-donations"
                     className={navLinkClass}
                   >
-                    <FaBoxOpen className="inline-block mr-2" />
+                    <GiReceiveMoney className="inline-block mr-2" />
                     Received Donations
                   </NavLink>
 
