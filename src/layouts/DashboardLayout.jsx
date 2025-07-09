@@ -43,14 +43,15 @@ const DashboardLayout = () => {
 
   return (
     <div>
-      <header className="border-b border-base-300  dark:bg-gray-800 hidden md:flex">
+      <header className="sticky top-0 z-50 bg-white border-b border-base-300 dark:bg-gray-800 hidden md:flex">
         <Navbar />
       </header>
-      <div className="drawer lg:drawer-open">
+      <div className="drawer lg:drawer-open ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+
         <div className="drawer-content flex flex-col ">
           {/* Navbar */}
-          <div className="navbar bg-base-300 w-full lg:hidden">
+          <div className="navbar  dark:bg-gray-800 w-full lg:hidden sticky top-0 z-10 bg-white">
             <div className="flex-none ">
               <label
                 htmlFor="my-drawer-2"
@@ -61,7 +62,7 @@ const DashboardLayout = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  className="inline-block h-6 w-6 stroke-current"
+                  className="inline-block h-6 w-6 stroke-current dark:text-white"
                 >
                   <path
                     strokeLinecap="round"
@@ -72,15 +73,17 @@ const DashboardLayout = () => {
                 </svg>
               </label>
             </div>
-            <div className="mx-2 flex-1 px-2 lg:hidden">Dashboard</div>
+            <div className="mx-2 dark:text-white flex-1 px-2 lg:hidden">
+              Dashboard
+            </div>
           </div>
           {/* Page content here */}
-          <div className="p-5 dark:bg-gray-700 min-h-full">
+          <div className="p-5 dark:bg-gray-700 min-h-full ">
             <Outlet></Outlet>
           </div>
           {/* Page content here */}
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side ">
           <label
             htmlFor="my-drawer-2"
             aria-label="close sidebar"

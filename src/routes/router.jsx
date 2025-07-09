@@ -31,6 +31,8 @@ import MyRequests from "../pages/CharityPage/MyRequests";
 import MyPickups from "../pages/CharityPage/MyPickups";
 import ReceivedDonations from "../pages/CharityPage/ReceivedDonations";
 import CharityTransactionHistory from "../pages/CharityPage/CharityTransactionHistory";
+import UpdateDonation from "../pages/RestaurantPage/UpdateDonation";
+import DonationDetails from "../pages/Home/Donation/DonationsDetails/DonationDetails";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
         Component: () => (
           <PrivateRoute>
             <AllDonation />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/donationDetails/:id",
+        Component: () => (
+          <PrivateRoute>
+            <DonationDetails />
           </PrivateRoute>
         ),
       },
@@ -127,6 +137,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/requested-donations",
         Component: RequestedDonations,
+      },
+      {
+        path: "/dashboard/update-donation/:id",
+        Component: UpdateDonation, // আগের modal নয়
       },
 
       // Admin Dashboaed Route

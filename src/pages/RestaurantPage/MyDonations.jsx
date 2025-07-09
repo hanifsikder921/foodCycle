@@ -1,16 +1,17 @@
-// src/pages/Dashboard/RestaurantPage/MyDonations.jsx
-
 import React from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Link } from "react-router";
 import Swal from "sweetalert2";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useNavigate } from "react-router";
+import Loading from "../../components/Loading/Loading";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 const MyDonations = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const { data: donations = [], isLoading } = useQuery({
     queryKey: ["myDonations", user?.email],
@@ -47,57 +48,80 @@ const MyDonations = () => {
     });
   };
 
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/update-donation/${id}`);
+  };
+
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4 dark:text-white">My Donations</h2>
+    <div>
+      <h2 className="md:text-3xl text-2xl font-bold mb-6 text-center dark:text-white bg-white dark:bg-gray-700 sticky top-16 p-5 md:z-15">
+        My Donations
+      </h2>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
+      ) : donations.length === 0 ? (
+        <p className="text-center text-gray-500 dark:text-gray-400">
+          You have not added any donations yet.
+        </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:p-4">
           {donations.map((donation) => (
             <div
               key={donation._id}
-              className="border rounded-lg shadow-md bg-white dark:bg-gray-800 p-4"
+              className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 border dark:border-gray-700"
             >
               <img
                 src={donation.image}
                 alt={donation.title}
-                className="h-40 w-full object-cover rounded"
+                className="h-48 w-full object-cover"
               />
-              <h3 className="text-xl font-semibold mt-3 dark:text-white">{donation.title}</h3>
-              <p className="dark:text-white">Type: {donation.foodType}</p>
-              <p className="dark:text-white">Quantity: {donation.quantity}</p>
-              <p className="dark:text-white">Restaurant: {donation.restaurantName}</p>
-              <p className="dark:text-white">
-                Status:{" "}
-                <span
-                  className={`font-bold ${
-                    donation.status === "Pending"
-                      ? "text-yellow-500"
-                      : donation.status === "Verified"
-                      ? "text-green-500"
-                      : "text-red-500"
-                  }`}
-                >
-                  {donation.status}
-                </span>
-              </p>
-
-              <div className="mt-3 flex gap-3">
-                {donation.status !== "Rejected" && (
-                  <Link
-                    to={`/dashboard/update-donation/${donation._id}`}
-                    className="btn btn-sm btn-primary"
+              <div className="p-4 space-y-2">
+                <h3 className="text-xl font-semibold dark:text-white">
+                  {donation.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Restaurant: <span className="font-medium">{donation.restaurantName}</span>
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Type: <span className="font-medium">{donation.foodType}</span>
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Quantity: <span className="font-medium">{donation.quantity}</span>
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Location: <span className="font-medium">{donation.location}</span>
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  Status:{" "}
+                  <span
+                    className={`font-bold ${
+                      donation.status === "Pending"
+                        ? "text-yellow-500"
+                        : donation.status === "Verified"
+                        ? "text-green-500"
+                        : "text-red-500"
+                    }`}
                   >
-                    Update
-                  </Link>
-                )}
-                <button
-                  onClick={() => handleDelete(donation._id)}
-                  className="btn btn-sm btn-error"
-                >
-                  Delete
-                </button>
+                    {donation.status}
+                  </span>
+                </p>
+
+                <div className="flex justify-end gap-2 pt-3">
+                  {donation.status !== "Rejected" && (
+                    <button
+                      onClick={() => handleUpdate(donation._id)}
+                      className="flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
+                    >
+                      <FaEdit /> Update
+                    </button>
+                  )}
+                  <button
+                    onClick={() => handleDelete(donation._id)}
+                    className="flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
+                  >
+                    <FaTrashAlt /> Delete
+                  </button>
+                </div>
               </div>
             </div>
           ))}
