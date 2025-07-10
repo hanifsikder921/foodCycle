@@ -7,15 +7,13 @@ import useAuth from "../../../../hooks/useAuth";
 import Loading from "../../../../components/Loading/Loading";
 import { useForm } from "react-hook-form";
 import {
-  FaHeart,
-  FaClock,
   FaMapMarkerAlt,
   FaUtensils,
   FaBalanceScale,
   FaCheckCircle,
 } from "react-icons/fa";
 import { IoIosTime } from "react-icons/io";
-import { MdRestaurant, MdEmail } from "react-icons/md";
+import { MdRestaurant } from "react-icons/md";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import useUserRole from "../../../../hooks/useUserRole";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -327,8 +325,7 @@ const DonationDetails = () => {
                 onClick={handleAddToFavorites}
                 className="btn  btn-primary gap-2 bg-yellow-500 text-black"
               >
-                <FaHeart />{" "}
-                {isFavorited ? "Remove  Favorite" : "Save to Favorites"}
+               Save to Favorites
               </button>
             )}
 
