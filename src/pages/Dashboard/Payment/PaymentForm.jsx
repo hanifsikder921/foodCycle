@@ -57,12 +57,13 @@ const PaymentForm = ({ amount = 25, onPaymentSuccess }) => {
           const paymentData = {
             amount: amount,
             currency: "usd",
+            paymentMethode:'Card',
             transactionId: result.paymentIntent.id,
             email: user?.email,
             name: user?.displayName,
             paymentDate: new Date(),
             status: "completed",
-            purpose: "FoodCycle Donation",
+            purpose: "Charity Role Request",
           };
 
           const saveRes = await axiousSecure.post("/save-payment", paymentData);
