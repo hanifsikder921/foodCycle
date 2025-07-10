@@ -66,8 +66,8 @@ const FavoriteItem = () => {
             You haven't added any donations to favorites yet.
           </p>
           <Link 
-            to="/available-foods" 
-            className="mt-4 inline-block btn btn-primary"
+            to="/allDonation" 
+            className="btn btn-primary my-5"
           >
             Browse Donations
           </Link>
