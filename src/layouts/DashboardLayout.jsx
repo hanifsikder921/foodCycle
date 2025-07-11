@@ -31,7 +31,7 @@ const DashboardLayout = () => {
   const { role, roleLoading } = useUserRole();
 
   const navLinkClass = ({ isActive }) =>
-    `flex items-center gap-2 px-4 py-2 mt-2 rounded-lg font-medium transition-colors duration-300 ${
+    `flex items-center gap-2 px-4 py-2 mt-2 rounded-lg font-medium transition-colors  ${
       isActive
         ? "bg-gray-300 text-gray-900 dark:bg-gray-700 dark:text-white"
         : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
