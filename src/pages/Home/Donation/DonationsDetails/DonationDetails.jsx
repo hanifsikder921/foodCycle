@@ -95,6 +95,7 @@ const DonationDetails = () => {
         restaurantEmail:donation.restaurantEmail,
         foodType:donation.foodType,
         quantity:donation.quantity,
+        location:donation.location,
         requestDescription: data.requestDescription,
         pickupTime: data.pickupTime,
         status: "Pending",

@@ -17,7 +17,7 @@ const MyPickups = () => {
         `/donationRequests?email=${user?.email}`
       );
       return res.data.filter(
-        (req) => req.status === "Accepted" || req.status === "Picked Up"
+        (req) => req.status === "Accepted" 
       );
     },
     enabled: !!user?.email,
@@ -26,9 +26,13 @@ const MyPickups = () => {
   // Mutation to mark as Picked Up
   const { mutate: confirmPickup, isPending } = useMutation({
     mutationFn: async (donationId) => {
-      const res = await axiosSecure.patch(`/donations/mark-picked-up/${donationId}`, {
-        status: "Picked Up",
-      });
+      const res = await axiosSecure.patch(
+        `/donations/mark-picked-up/${donationId}`,
+        {
+          status: "Picked Up",
+          receiverCharity: user.email,
+        }
+      );
       return res.data;
     },
     onSuccess: () => {
@@ -54,7 +58,7 @@ const MyPickups = () => {
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">My Pickups</h2>
       {pickups.length === 0 ? (
-        <p>No pickups found.</p>
+        <p>No pickups Available </p>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {pickups.map((pickup) => (
