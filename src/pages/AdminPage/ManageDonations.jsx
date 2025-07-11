@@ -85,6 +85,10 @@ const ManageDonations = () => {
                         ? "bg-green-100 text-green-700"
                         : donation.status === "Pending"
                         ? "bg-yellow-100 text-yellow-700"
+                        : donation.status==="Picked Up"
+                        ? " bg-emerald-500/25 text-emerald-500"
+                        : donation.status==="Requested"
+                        ? "bg-blue-500"
                         : "bg-red-100 text-red-700"
                     }`}
                   >
@@ -94,14 +98,14 @@ const ManageDonations = () => {
                 <td className="px-4 py-3 flex flex-wrap gap-2 justify-center">
                   <button
                     onClick={() => handleVerify(donation._id)}
-                    disabled={donation.status === "Verified"}
+                    disabled={donation.status === "Verified" || donation.status==='Requested' || donation.status==='Picked Up'}
                     className="btn btn-xs btn-success"
                   >
                     Verify
                   </button>
                   <button
                     onClick={() => handleReject(donation._id)}
-                    disabled={donation.status === "Rejected"}
+                    disabled={donation.status === "Rejected"|| donation.status==='Picked Up' }
                     className="btn btn-xs btn-error"
                   >
                     Reject

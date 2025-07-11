@@ -10,7 +10,7 @@ const AllDonation = () => {
 
   useEffect(() => {
     axios
-       .get(`/donations?status=Verified&status=Requested`)
+       .get(`/donations?status=Verified&status=Requested&status=Picked Up`)
       .then((res) => setDonations(res.data))
       .catch((err) => console.error(err));
   }, [axios]);

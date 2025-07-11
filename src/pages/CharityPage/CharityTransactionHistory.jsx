@@ -1,9 +1,10 @@
 import React from 'react';
+import UserTransectionHistory from './../Dashboard/UserPage/UserTransectionHistory';
 
 const CharityTransactionHistory = () => {
     return (
         <div>
-            CharityTransactionHistory
+           <UserTransectionHistory/>
         </div>
     );
 };

@@ -28,6 +28,7 @@ const DonationDetails = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewModal, setReviewModal] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [hasRequested, setHasRequested] = useState(false);
 
   const {
     title,
@@ -59,13 +60,18 @@ const DonationDetails = () => {
     setValue: setReviewValue,
   } = useForm();
   useEffect(() => {
-    if (user && donation) {
-      axios
-        .get(`/favorites/${donation._id}/${user.email}`)
-        .then((res) => setIsFavorited(res.data.isFavorited))
-        .catch(() => setIsFavorited(false));
+    if (user && donation && role === "charity") {
+      axiosSecure
+        .get(`/donationRequests/check/${donation._id}/${user.email}`)
+        .then((res) => {
+          setHasRequested(res.data.hasRequested);
+        })
+        .catch((error) => {
+          console.error("Error checking donation request status:", error);
+          setHasRequested(false);
+        });
     }
-  }, [user, donation, axios]);
+  }, [user, donation, role, axiosSecure]);
 
   useEffect(() => {
     if (donation) {
@@ -86,6 +92,9 @@ const DonationDetails = () => {
         restaurantName: donation.restaurantName,
         charityName: user.displayName,
         charityEmail: user.email,
+        restaurantEmail:donation.restaurantEmail,
+        foodType:donation.foodType,
+        quantity:donation.quantity,
         requestDescription: data.requestDescription,
         pickupTime: data.pickupTime,
         status: "Pending",
@@ -150,43 +159,43 @@ const DonationDetails = () => {
   }, [id, axios]);
 
   const handleAddToFavorites = async () => {
-  try {
-    if (isFavorited) {
-      // Remove from favorites
-      await axios.delete(`/favorites/${donation._id}`, { 
-        data: { userEmail: user.email } 
-      });
-      setIsFavorited(false);
+    try {
+      if (isFavorited) {
+        // Remove from favorites
+        await axios.delete(`/favorites/${donation._id}`, {
+          data: { userEmail: user.email },
+        });
+        setIsFavorited(false);
+        Swal.fire({
+          icon: "success",
+          title: "Removed from Favorites!",
+          text: "Donation removed from your favorites.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        // Add to favorites
+        await axios.post("/favorites", {
+          donationId: donation._id,
+          userEmail: user.email,
+        });
+        setIsFavorited(true);
+        Swal.fire({
+          icon: "success",
+          title: "Added to Favorites!",
+          text: "Donation saved to your favorites.",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error) {
       Swal.fire({
-        icon: "success",
-        title: "Removed from Favorites!",
-        text: "Donation removed from your favorites.",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else {
-      // Add to favorites
-      await axios.post("/favorites", {
-        donationId: donation._id,
-        userEmail: user.email,
-      });
-      setIsFavorited(true);
-      Swal.fire({
-        icon: "success",
-        title: "Added to Favorites!",
-        text: "Donation saved to your favorites.",
-        showConfirmButton: false,
-        timer: 1500,
+        icon: "error",
+        title: "Operation Failed",
+        text: error.response?.data?.message || "Failed to update favorites",
       });
     }
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Operation Failed",
-      text: error.response?.data?.message || "Failed to update favorites",
-    });
-  }
-};
+  };
   const handleConfirmPickup = () => {
     axios.patch(`/donations/${id}`, { status: "Picked Up" }).then(() => {
       Swal.fire({
@@ -325,18 +334,19 @@ const DonationDetails = () => {
                 onClick={handleAddToFavorites}
                 className="btn  btn-primary gap-2 bg-yellow-500 text-black"
               >
-               Save to Favorites
+                Save to Favorites
               </button>
             )}
 
-            {role === "charity" && status === "Verified" && (
+            {role === "charity" && status!=='Picked Up' && (
               <button
                 onClick={() =>
                   document.getElementById("requestModal").showModal()
                 }
                 className="btn btn-warning gap-2"
+                disabled={hasRequested}
               >
-                Request Donation
+                {hasRequested ? "Already Requested" : "Request Donation"}
               </button>
             )}
 
