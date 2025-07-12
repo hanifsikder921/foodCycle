@@ -62,7 +62,7 @@ const ManageRequests = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className=" mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold mb-6 text-center dark:text-white">
         Manage Donation Requests
       </h2>
