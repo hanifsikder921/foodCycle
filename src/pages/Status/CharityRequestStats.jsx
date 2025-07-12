@@ -39,9 +39,8 @@ const colorClasses = {
 };
 
 const CharityRequestStats = () => {
-  const { data = {}, isLoading } = useCharityRequestStats();
+  const { data = {} } = useCharityRequestStats();
 
-  if (isLoading) return <p className="text-center py-5">Loading stats...</p>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">

@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa6";
 
 const UserStats = () => {
-  const { data: userStats, isLoading: statsLoading } = useUserStats();
+  const { data: userStats } = useUserStats();
 
   const statCards = [
     {
@@ -66,47 +66,43 @@ const UserStats = () => {
 
   return (
     <div>
-      {statsLoading ? (
-        <p className="text-gray-500 dark:text-gray-400">Loading stats...</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {statCards.map((card) => (
-            <div
-              key={card.title}
-              className={`bg-white dark:bg-gray-800 rounded-xl p-6 flex items-center justify-between hover:shadow-md cursor-pointer transition duration-300 border-l-4 shadow ${
-                colorClasses[card.color].border
-              }`}
-            >
-              <div className="flex items-center gap-4">
-                <div
-                  className={`p-3 rounded-full ${colorClasses[card.color].bg} ${
-                    colorClasses[card.color].text
-                  }`}
-                >
-                  {card.icon}
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
-                    {card.subtitle}
-                  </p>
-                  <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                    {card.title}
-                  </h2>
-                </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {statCards.map((card) => (
+          <div
+            key={card.title}
+            className={`bg-white dark:bg-gray-800 rounded-xl p-6 flex items-center justify-between hover:shadow-md cursor-pointer transition duration-300 border-l-4 shadow ${
+              colorClasses[card.color].border
+            }`}
+          >
+            <div className="flex items-center gap-4">
+              <div
+                className={`p-3 rounded-full ${colorClasses[card.color].bg} ${
+                  colorClasses[card.color].text
+                }`}
+              >
+                {card.icon}
               </div>
               <div>
-                <p
-                  className={`text-3xl font-extrabold ${
-                    colorClasses[card.color].text
-                  }`}
-                >
-                  {card.count}
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  {card.subtitle}
                 </p>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
+                  {card.title}
+                </h2>
               </div>
             </div>
-          ))}
-        </div>
-      )}
+            <div>
+              <p
+                className={`text-3xl font-extrabold ${
+                  colorClasses[card.color].text
+                }`}
+              >
+                {card.count}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

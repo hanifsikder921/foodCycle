@@ -6,16 +6,11 @@ import { ImUserCheck } from "react-icons/im";
 import {
   FaHome,
   FaBoxOpen,
-  FaMoneyCheckAlt,
   FaUserEdit,
-  FaSearchLocation,
-  FaUserCheck,
   FaUserClock,
   FaUserShield,
   FaMotorcycle,
   FaTasks,
-  FaCheckCircle,
-  FaWallet,
   FaHeart,
   FaStar,
   FaHistory,
@@ -37,9 +32,10 @@ const DashboardLayout = () => {
         : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
     }`;
 
-  if (roleLoading) {
-    return <Loading />;
-  }
+    
+    if (roleLoading) {
+      return <Loading/>
+    }
 
   return (
     <div>

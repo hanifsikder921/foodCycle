@@ -5,10 +5,9 @@ import {
   FaClock,
   FaTimesCircle,
   FaTruck,
-  FaUserCheck 
+  FaUserCheck,
 } from "react-icons/fa";
 import useDonationStats from "../../hooks/useDonationStats";
-
 
 
 const statsConfig = [
@@ -42,11 +41,11 @@ const statsConfig = [
     icon: <FaTimesCircle className="text-2xl" />,
     color: "red",
   },
-    {
+  {
     key: "Requested",
     label: "Requested",
     icon: <FaUserCheck className="text-2xl" />,
-    color: "orange",
+    color: "violet",
   },
 ];
 
@@ -56,20 +55,29 @@ const colorMap = {
   red: "text-red-500 bg-red-100 dark:bg-red-900",
   blue: "text-blue-500 bg-blue-100 dark:bg-blue-900",
   indigo: "text-indigo-500 bg-indigo-100 dark:bg-indigo-900",
-   orange: "text-orange-500 bg-orange-100 dark:bg-orange-900",
+  violet: "text-violet-500 bg-violet-100 dark:bg-violet-900",
+};
+const borderColorMap = {
+  yellow: "border-yellow-500",
+  green: "border-green-500",
+  red: "border-red-500",
+  blue: "border-blue-500",
+  indigo: "border-indigo-500",
+  violet: "border-violet-500",
 };
 
 const DonationStats = () => {
-  const { data = {}, isLoading } = useDonationStats();
+  const { data = {}} = useDonationStats();
 
-  if (isLoading) return <p className="text-center py-5">Loading stats...</p>;
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {statsConfig.map((stat) => (
         <div
           key={stat.key}
-          className={`bg-white dark:bg-gray-800 rounded-xl p-6 flex items-center justify-between border-l-4 shadow transition duration-300 hover:shadow-md border-${stat.color}-500`}
+          className={`bg-white dark:bg-gray-800 rounded-xl p-6 flex items-center justify-between shadow transition duration-300 hover:shadow-md border-l-4 ${
+            borderColorMap[stat.color]
+          }`}
         >
           <div className="flex items-center gap-4">
             <div className={`p-3 rounded-full ${colorMap[stat.color]}`}>
