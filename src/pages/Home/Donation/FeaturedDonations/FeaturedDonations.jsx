@@ -21,9 +21,18 @@ const FeaturedDonations = () => {
 
   return (
     <section className="my-12 px-4 md:px-8 lg:px-16">
-      <h2 className="text-3xl font-bold text-center mb-8">
-        Featured Donations
-      </h2>
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-3">
+          Featured Donations
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Explore our most impactful contributions and see how generosity
+          transforms lives
+        </p>
+        <div className="mt-6 flex justify-center">
+          <div className="w-20 h-1 bg-blue-500 rounded-full"></div>
+        </div>
+      </div>
       {featuredDonations.length === 0 ? (
         <p className="text-center text-gray-500">
           No featured donations available.

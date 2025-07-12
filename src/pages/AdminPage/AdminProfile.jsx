@@ -10,11 +10,14 @@ import {
   FiSettings,
 } from "react-icons/fi";
 import useUserRole from "./../../hooks/useUserRole";
-import Loading from './../../components/Loading/Loading';
+import Loading from "./../../components/Loading/Loading";
+import { CiCircleInfo } from "react-icons/ci";
+
 
 const AdminProfile = () => {
   const { user } = useAuth();
   const { role, roleLoading } = useUserRole();
+
 
   const adminInfo = {
     name: user?.displayName || "Admin Name",
@@ -23,20 +26,24 @@ const AdminProfile = () => {
     role: role,
     lastLogin: user?.metadata?.lastSignInTime || "Unavailable",
     phone: "+1 234 567 890",
-    location: "New York, USA",
-    joinDate: "January 15, 2022",
+    location: "Bangladesh",
+    joinDate: user?.metadata?.creationTime || "Unavailable",
     status: "Active",
   };
 
   if (roleLoading) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 p-6 rounded-xl">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">
-          Admin Dashboard
+        <h1 className="text-3xl font-semibold text-gray-800 dark:text-white mb-8 flex items-center gap-2">
+          <span>Profile Info</span>
+          <CiCircleInfo
+            className="text-blue-500 text-3xl cursor-pointer hover:text-blue-600 transition"
+            title="This is your admin dashboard overview"
+          />
         </h1>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl overflow-hidden">
@@ -159,46 +166,7 @@ const AdminProfile = () => {
             </div>
           </div>
 
-          {/* Stats Section */}
-          <div className="bg-gray-50 dark:bg-gray-700 px-8 py-6">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
-              Quick Stats
-            </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Total Users
-                </p>
-                <p className="text-2xl font-bold text-gray-800 dark:text-white">
-                  1,248
-                </p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Active Sessions
-                </p>
-                <p className="text-2xl font-bold text-gray-800 dark:text-white">
-                  42
-                </p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Tasks Completed
-                </p>
-                <p className="text-2xl font-bold text-gray-800 dark:text-white">
-                  89%
-                </p>
-              </div>
-              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Storage Used
-                </p>
-                <p className="text-2xl font-bold text-gray-800 dark:text-white">
-                  65%
-                </p>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </div>
     </div>

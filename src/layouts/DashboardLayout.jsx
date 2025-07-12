@@ -187,7 +187,7 @@ const DashboardLayout = () => {
                 <div>
                   <NavLink to="/dashboard" end className={navLinkClass}>
                     <FaHome className="inline-block mr-2" />
-                    Admin Dashboard
+                    Dashboard
                   </NavLink>
 
                   <NavLink
