@@ -85,7 +85,7 @@ const ReceivedDonations = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Received Donations</h2>
+      <h2 className="text-2xl font-bold mb-4 dark:text-white">Received Donations</h2>
 
       {donations.length === 0 ? (
         <div className="text-center py-10">
@@ -94,52 +94,58 @@ const ReceivedDonations = () => {
           </p>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {donations.map((donation) => (
-            <div
-              key={donation._id}
-              className="border p-4 rounded-xl shadow-md dark:bg-gray-800 dark:text-white hover:shadow-lg transition-shadow"
-            >
-              <h3 className="text-lg font-semibold mb-2">
-                {donation.donationTitle}
-              </h3>
-
-              <div className="space-y-2">
-                <p>
-                  <span className="font-medium">Restaurant:</span>{" "}
-                  {donation.restaurantName}
-                </p>
-                <p>
-                  <span className="font-medium">Location:</span>{" "}
-                  {donation.location}
-                </p>
-                <p>
-                  <span className="font-medium">Food Type:</span>{" "}
-                  {donation.foodType}
-                </p>
-                <p>
-                  <span className="font-medium">Quantity:</span>{" "}
-                  {donation.quantity}
-                </p>
-                <p>
-                  <span className="font-medium">Pickup Time:</span>{" "}
-                  {donation.pickupTime}
-                </p>
-              </div>
-
-              <div className="flex justify-between items-center mt-4">
-                <span className="badge badge-success">Picked Up</span>
-
-                <button
-                  onClick={() => handleOpenReviewModal(donation)}
-                  className="btn btn-sm btn-primary"
-                >
-                  Add Review
-                </button>
-              </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {donations.map((donation) => (
+    <div
+      key={donation._id}
+      className="border border-gray-200 dark:border-gray-700 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-200 dark:bg-gray-800 dark:text-white bg-white"
+    >
+      <div className="flex flex-col h-full">
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">
+            {donation.donationTitle}
+          </h3>
+          
+          <div className="space-y-3 text-gray-600 dark:text-gray-300">
+            <div className="flex items-start">
+              <span className="font-medium text-gray-700 dark:text-gray-200 w-24 flex-shrink-0">Restaurant:</span>
+              <span className="flex-grow">{donation.restaurantName}</span>
             </div>
-          ))}
+            <div className="flex items-start">
+              <span className="font-medium text-gray-700 dark:text-gray-200 w-24 flex-shrink-0">Location:</span>
+              <span className="flex-grow">{donation.location}</span>
+            </div>
+            <div className="flex items-start">
+              <span className="font-medium text-gray-700 dark:text-gray-200 w-24 flex-shrink-0">Food Type:</span>
+              <span className="flex-grow">{donation.foodType}</span>
+            </div>
+            <div className="flex items-start">
+              <span className="font-medium text-gray-700 dark:text-gray-200 w-24 flex-shrink-0">Quantity:</span>
+              <span className="flex-grow">{donation.quantity}</span>
+            </div>
+            <div className="flex items-start">
+              <span className="font-medium text-gray-700 dark:text-gray-200 w-24 flex-shrink-0">Pickup Time:</span>
+              <span className="flex-grow">{donation.pickupTime}</span>
+            </div>
+          </div>
         </div>
+
+        <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-700 flex justify-between items-center">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+            Picked Up
+          </span>
+          
+          <button
+            onClick={() => handleOpenReviewModal(donation)}
+            className="px-4 py-2 text-sm font-medium rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors dark:bg-blue-700 dark:hover:bg-blue-600"
+          >
+            Add Review
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
       )}
 
       {/* Review Modal */}

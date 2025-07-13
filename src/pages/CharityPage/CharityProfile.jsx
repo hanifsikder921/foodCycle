@@ -1,10 +1,9 @@
 import React from 'react';
+import ProfilePage from '../ProfilePage/ProfilePage';
 
 const CharityProfile = () => {
     return (
-        <div>
-            CharityProfile
-        </div>
+     <ProfilePage/>
     );
 };
 

@@ -95,10 +95,10 @@ const DashboardLayout = () => {
             {!roleLoading && role === "user" && (
               <>
                 <div>
-                  <NavLink to="/dashboard" end className={navLinkClass}>
+                  {/* <NavLink to="/dashboard" end className={navLinkClass}>
                     <FaHome className="inline-block mr-2" />
                     Dashboard Home
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink to="/dashboard/my-profile" className={navLinkClass}>
                     <FaUser className="inline-block mr-2" />
                     My Profile
@@ -137,10 +137,10 @@ const DashboardLayout = () => {
             {!roleLoading && role === "restaurant" && (
               <>
                 <div>
-                  <NavLink to="/dashboard" end className={navLinkClass}>
+                  {/* <NavLink to="/dashboard" end className={navLinkClass}>
                     <FaHome className="inline-block mr-2" />
                     Dashboard Home
-                  </NavLink>
+                  </NavLink> */}
 
                   <NavLink
                     to="/dashboard/restaurant-profile"
@@ -241,10 +241,10 @@ const DashboardLayout = () => {
             {!roleLoading && role === "charity" && (
               <>
                 <div>
-                  <NavLink to="/dashboard" end className={navLinkClass}>
+                  {/* <NavLink to="/dashboard" end className={navLinkClass}>
                     <FaHome className="inline-block mr-2" />
                     Dashboard Home
-                  </NavLink>
+                  </NavLink> */}
 
                   <NavLink
                     to="/dashboard/charity-profile"

@@ -6,6 +6,12 @@ import useCharityRequestStats from "../../hooks/useCharityRequestStats";
 
 const cardConfig = [
   {
+    key: "total",
+    label: "Total Requests",
+    color: "blue",
+    icon: <FaListAlt className="text-2xl" />,
+  },
+  {
     key: "pending",
     label: "Pending Requests",
     color: "yellow",
@@ -23,12 +29,7 @@ const cardConfig = [
     color: "red",
     icon: <FaTimesCircle className="text-2xl" />,
   },
-  {
-    key: "total",
-    label: "Total Requests",
-    color: "blue",
-    icon: <FaListAlt className="text-2xl" />,
-  },
+  
 ];
 
 const colorClasses = {
