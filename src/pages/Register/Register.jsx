@@ -49,6 +49,13 @@ const Register = () => {
         };
         updateUserProfile(userProfile)
           .then(() => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Registration successful!",
+              showConfirmButton: false,
+              timer: 1000,
+            });
             navigate(from);
           })
           .catch((error) => {

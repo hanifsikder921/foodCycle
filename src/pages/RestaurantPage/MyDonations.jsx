@@ -69,7 +69,7 @@ const MyDonations = () => {
   const StatusBadge = ({ status }) => {
   // Define all possible status configurations with defaults
   const statusConfig = {
-    Pending: {
+    pending: {
       icon: <FiClock className="mr-1" />,
       color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200",
     },

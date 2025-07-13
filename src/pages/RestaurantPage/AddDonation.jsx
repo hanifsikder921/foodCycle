@@ -25,7 +25,7 @@ const AddDonation = () => {
     const donationData = {
       ...data,
       image: itemImage,
-      status: "Pending",
+      status: "pending",
       pickupTime: pickupTime.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",

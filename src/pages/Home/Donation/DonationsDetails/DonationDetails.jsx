@@ -98,7 +98,7 @@ const DonationDetails = () => {
         location:donation.location,
         requestDescription: data.requestDescription,
         pickupTime: data.pickupTime,
-        status: "Pending",
+        status: "pending",
       });
 
       if (result.data.insertedId) {

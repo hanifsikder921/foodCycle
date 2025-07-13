@@ -149,7 +149,7 @@ const RequestedDonations = () => {
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          request.status === "Pending"
+                          request.status === "pending"
                             ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
                             : request.status === "Accepted"
                             ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
@@ -159,7 +159,7 @@ const RequestedDonations = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        {request.status === "Pending" ? (
+                        {request.status === "pending" ? (
                           <div className="flex justify-end space-x-2">
                             <button
                               onClick={() => handleDecision(request._id, request.donationId, "Accepted")}
