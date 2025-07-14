@@ -33,6 +33,10 @@ import ReceivedDonations from "../pages/CharityPage/ReceivedDonations";
 import CharityTransactionHistory from "../pages/CharityPage/CharityTransactionHistory";
 import UpdateDonation from "../pages/RestaurantPage/UpdateDonation";
 import DonationDetails from "../pages/Home/Donation/DonationsDetails/DonationDetails";
+import AdminRoute from "./AdminRoute";
+import RestaurentRoute from "./RestaurentRoute";
+import CharityRoute from "./CharityRoute";
+import UserRoutes from "./UserRoutes";
 
 const router = createBrowserRouter([
   {
@@ -102,93 +106,177 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/my-profile",
-        Component: UserProfile,
+        element: (
+          <UserRoutes>
+            <UserProfile />
+          </UserRoutes>
+        ),
       },
       {
         path: "/dashboard/paymentHistory",
-        Component: UserTransectionHistory,
+        element: (
+          <UserRoutes>
+            <UserTransectionHistory />
+          </UserRoutes>
+        ),
       },
       {
         path: "/dashboard/requestCharity",
-        Component: RequestCharity,
+        element: (
+          <UserRoutes>
+            <RequestCharity />
+          </UserRoutes>
+        ),
       },
       {
         path: "/dashboard/favorite",
-        Component: FavoriteItem,
+        element: (
+          <UserRoutes>
+            <FavoriteItem />
+          </UserRoutes>
+        ),
       },
       {
         path: "/dashboard/reviews",
-        Component: UserReviews,
+        element: (
+          <UserRoutes>
+            <UserReviews />
+          </UserRoutes>
+        ),
       },
 
       // restaurant Dashbard Route
       {
         path: "/dashboard/restaurant-profile",
-        Component: RestaurantProfile,
+        element: (
+          <RestaurentRoute>
+            <RestaurantProfile />
+          </RestaurentRoute>
+        ),
       },
       {
         path: "/dashboard/add-donation",
-        Component: AddDonation,
+        element: (
+          <RestaurentRoute>
+            <AddDonation />
+          </RestaurentRoute>
+        ),
       },
       {
         path: "/dashboard/my-donations",
-        Component: MyDonations,
+        element: (
+          <RestaurentRoute>
+            <MyDonations />
+          </RestaurentRoute>
+        ),
       },
       {
         path: "/dashboard/requested-donations",
-        Component: RequestedDonations,
+        element: (
+          <RestaurentRoute>
+            <RequestedDonations />
+          </RestaurentRoute>
+        ),
       },
       {
         path: "/dashboard/update-donation/:id",
-        Component: UpdateDonation,
+        element: (
+          <RestaurentRoute>
+            <UpdateDonation />
+          </RestaurentRoute>
+        ),
       },
 
       // Admin Dashboaed Route
       {
         path: "/dashboard/admin-profile",
-        Component: AdminProfile,
+        element: (
+          <AdminRoute>
+            <AdminProfile />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-donations",
-        Component: ManageDonations,
+        element: (
+          <AdminRoute>
+            <ManageDonations />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-users",
-        Component: ManageUsers,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-role-requests",
-        Component: ManageRoleRequests,
+        element: (
+          <AdminRoute>
+            <ManageRoleRequests />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/manage-requests",
-        Component: ManageRequests,
+        element: (
+          <AdminRoute>
+            <ManageRequests />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/feature-donations",
-        Component: FeatureDonationsAdd,
+        element: (
+          <AdminRoute>
+            <FeatureDonationsAdd />
+          </AdminRoute>
+        ),
       },
 
       // Charity Dashbord Route
       {
         path: "/dashboard/charity-profile",
-        Component: CharityProfile,
+        element: (
+          <CharityRoute>
+            <CharityProfile />
+          </CharityRoute>
+        ),
       },
       {
         path: "/dashboard/my-requests",
-        Component: MyRequests,
+        element: (
+          <CharityRoute>
+            <MyRequests />
+          </CharityRoute>
+        ),
       },
       {
         path: "/dashboard/my-pickups",
-        Component: MyPickups,
+        element: (
+          <CharityRoute>
+            <MyPickups />
+          </CharityRoute>
+        ),
       },
       {
         path: "/dashboard/received-donations",
-        Component: ReceivedDonations,
+        element: (
+          <CharityRoute>
+            <ReceivedDonations />
+          </CharityRoute>
+        ),
       },
       {
         path: "/dashboard/charity-transactions",
-        Component: CharityTransactionHistory,
+        element: (
+          <CharityRoute>
+            <CharityTransactionHistory />
+          </CharityRoute>
+        ),
       },
     ],
   },
