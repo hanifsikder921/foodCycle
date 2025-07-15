@@ -142,10 +142,10 @@ const DashboardLayout = () => {
             {!roleLoading && role === "restaurant" && (
               <>
                 <div>
-                  {/* <NavLink to="/dashboard" end className={navLinkClass}>
+                  <NavLink to="/dashboard" end className={navLinkClass}>
                     <FaHome className="inline-block mr-2" />
-                    Dashboard Home
-                  </NavLink> */}
+                    Dashboard
+                  </NavLink>
 
                   <NavLink
                     to="/dashboard/restaurant-profile"

@@ -5,8 +5,8 @@ import UserDashBoard from '../UserPage/UserDashBoard';
 import ResurantDashBord from '../../RestaurantPage/ResurantDashBord';
 import AdminDashboard from '../../AdminPage/AdminDashboard';
 import Forbidden from './../../Forbidden/Forbidden';
-import CharityDashbord from '../../CharityPage/CharityDashbord';
 import ProfilePage from '../../ProfilePage/ProfilePage';
+
 
 const DashboardHome = () => {
     const { role, roleLoading } = useUserRole();
@@ -19,7 +19,7 @@ const DashboardHome = () => {
         return <ProfilePage/>
     }
     else if(role === 'restaurant'){
-        return <ProfilePage/>
+        return <ResurantDashBord/>
     }
     else if(role ==='admin'){
         return <AdminDashboard></AdminDashboard>
