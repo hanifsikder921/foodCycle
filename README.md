@@ -30,8 +30,6 @@ FoodCycle is a full-stack MERN-based donation management platform that connects 
 6. 📊 **Real-time Dashboards**
    - Each role sees a customized dashboard with statistics, recent actions, and relevant control panels.
 
-7. 🌙 **Dark & Light Mode Toggle**
-   - TailwindCSS + DaisyUI based elegant UI with smooth dark/light theme switcher.
 
 8. 🔍 **Search, Filter & Sort Donations**
    - Users can easily browse donations using filters by location, status, and sort by quantity or pickup time.
@@ -58,8 +56,8 @@ FoodCycle is a full-stack MERN-based donation management platform that connects 
 
 1. Clone the project:
    ```bash
-   git clone https://github.com/your-username/foodcycle.git
-   cd foodcycle
+   git clone https://github.com/Programming-Hero-Web-Course4/b11a12-client-side-hanifsikder921.git
+   cd FoodCycle
    ```
 
 2. Install dependencies:
@@ -92,6 +90,23 @@ FoodCycle is a full-stack MERN-based donation management platform that connects 
 ```
 
 ---
+**Admin Login:**  
+- **Username (Email):** admin@gmail.com 
+- **Password:** 123!He23
+
+
+**Charity Login:**  
+- **Username (Email):** foodbridge.foundation@gmail.com
+- **Password:** 123!He23
+
+
+**Restaurent Login:**  
+- **Username (Email):** spiceheaven@gmail.com
+- **Password:** 123!He23
+
+**User Login:**  
+- **Username (Email):** nusratjahan.bd@gmail.com
+- **Password:** 123!He23
 
 ## 🙌 Contributions
 
