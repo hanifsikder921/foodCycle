@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
 import { FaLinkedin, FaTwitter, FaFacebook } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
   const {
@@ -25,6 +26,9 @@ const ContactUs = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <Helmet>
+        <title> Contact || FoodCycle</title>
+      </Helmet>
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">

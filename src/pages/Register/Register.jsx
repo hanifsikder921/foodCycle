@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxios from "../../hooks/useAxios";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const {
@@ -81,6 +82,9 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center p-4">
+      <Helmet>
+              <title>Sign Up A New Account</title>
+            </Helmet>
       <div className="shadow shadow-gray-200 rounded-xl md:w-7/12 mx-auto">
         <div className="p-4 sm:p-7">
           <div className="text-center">

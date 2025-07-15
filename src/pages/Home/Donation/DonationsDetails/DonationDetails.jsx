@@ -19,6 +19,7 @@ import useUserRole from "../../../../hooks/useUserRole";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet-async";
 
 const DonationDetails = () => {
   const { id } = useParams();
@@ -43,6 +44,8 @@ const DonationDetails = () => {
     pickupTime,
     pickupDate,
   } = donation || {};
+
+
 
   // React Hook Form for request donation
   const {
@@ -94,11 +97,11 @@ const DonationDetails = () => {
         restaurantName: donation.restaurantName,
         charityName: user.displayName,
         charityEmail: user.email,
-        charityImage:user?.photoURL,
-        restaurantEmail:donation.restaurantEmail,
-        foodType:donation.foodType,
-        quantity:donation.quantity,
-        location:donation.location,
+        charityImage: user?.photoURL,
+        restaurantEmail: donation.restaurantEmail,
+        foodType: donation.foodType,
+        quantity: donation.quantity,
+        location: donation.location,
         requestDescription: data.requestDescription,
         pickupTime: data.pickupTime,
         status: "pending",
@@ -237,6 +240,9 @@ const DonationDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-4 md:p-6">
+      <Helmet>
+        <title> Details</title>
+      </Helmet>
       {/* Donation Card */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
         <div className="relative">
@@ -342,7 +348,7 @@ const DonationDetails = () => {
               </button>
             )}
 
-            {role === "charity" && status!=='Picked Up' && (
+            {role === "charity" && status !== "Picked Up" && (
               <button
                 onClick={() =>
                   document.getElementById("requestModal").showModal()
@@ -530,7 +536,9 @@ const DonationDetails = () => {
                       const donationDateTime = new Date(
                         `${pickupDate} ${pickupTime}`
                       );
-                      const proposedDateTime = new Date(`${pickupDate} ${value}`);
+                      const proposedDateTime = new Date(
+                        `${pickupDate} ${value}`
+                      );
 
                       // Check if proposed time is within ±2 hours of donation time
                       const minTime = new Date(donationDateTime);
@@ -578,8 +586,6 @@ const DonationDetails = () => {
           </form>
         </div>
       </dialog>
-
-      
 
       {/* Review Modal */}
       <dialog className={`modal ${reviewModal ? "modal-open" : ""}`}>

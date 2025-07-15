@@ -199,7 +199,7 @@ const AddDonation = () => {
 
         {/* Image Upload */}
         <div>
-          <label className="text-gray-700 dark:text-gray-300">Image URL</label>
+          <label className="text-gray-700 dark:text-gray-300">Upload Image</label>
           <input
             {...register("image", { required: true })}
             type="file"

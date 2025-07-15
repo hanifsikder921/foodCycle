@@ -6,12 +6,10 @@ import useAuth from "../../hooks/useAuth";
 import FoodCycleLogo from "../shared/FoodCycleLogo";
 import { IoMdMenu } from "react-icons/io";
 
-
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
 
   const navigate = useNavigate();
-
 
   const handleLogout = () => {
     Swal.fire({
@@ -42,7 +40,6 @@ const Navbar = () => {
     });
   };
 
-
   const menu = (
     <div className="flex flex-col md:flex-row md:gap-10 gap-3 md:items-center">
       {[
@@ -57,7 +54,9 @@ const Navbar = () => {
           to={path}
           className={({ isActive }) =>
             `font-semibold transition-colors duration-300 text-base-content relative z-10 ${
-              isActive ? "px-4 py-2 rounded-md border dark:border-amber-300" : " hover:text-blue-500"
+              isActive
+                ? "px-4 py-2 rounded-md border dark:border-amber-300"
+                : " hover:text-blue-500"
             } dark:text-amber-50`
           }
         >
@@ -65,15 +64,17 @@ const Navbar = () => {
         </NavLink>
       ))}
       {user ? (
-        <button onClick={handleLogout} className="btn btn-warning">
-          Logout
-        </button>
+        <div className="flex items-center justify-center gap-2">
+          <button onClick={handleLogout} className="btn btn-warning">
+            Logout
+          </button>
+          <img title={user?.displayName} src={user?.photoURL} className="w-12 h-12 rounded-full"></img>
+        </div>
       ) : (
         <Link to="/login" className="btn btn-primary">
           Login
         </Link>
       )}
-     
     </div>
   );
 
@@ -88,8 +89,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-              className="menu menu-sm dropdown-content rounded-box mt-3 w-52 p-2 shadow z-50 bg-white dark:bg-gray-800 dark:text-white"
-
+            className="menu menu-sm dropdown-content rounded-box mt-3 w-52 p-2 shadow z-50 bg-white dark:bg-gray-800 dark:text-white"
           >
             {menu}
           </ul>

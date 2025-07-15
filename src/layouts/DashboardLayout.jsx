@@ -21,6 +21,7 @@ import FoodCycleLogo from "../components/shared/FoodCycleLogo";
 import Navbar from "../components/Header/Navbar";
 import useUserRole from "../hooks/useUserRole";
 import Loading from "../components/Loading/Loading";
+import { Helmet } from "react-helmet-async";
 
 const DashboardLayout = () => {
   const { role, roleLoading } = useUserRole();
@@ -32,13 +33,17 @@ const DashboardLayout = () => {
         : "text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
     }`;
 
-    
-    if (roleLoading) {
-      return <Loading/>
-    }
+  if (roleLoading) {
+    return <Loading />;
+  }
+
+  
 
   return (
     <div>
+      <Helmet>
+        <title> {role} || Dashbord</title>
+      </Helmet>
       <header className="sticky top-0 z-50 bg-white border-b border-base-300 dark:bg-gray-800 hidden md:flex">
         <Navbar />
       </header>

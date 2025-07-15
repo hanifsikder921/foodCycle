@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { FiSearch, FiFilter, FiClock, FiPackage } from "react-icons/fi";
 import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const AllDonation = () => {
   const [donations, setDonations] = useState([]);
@@ -12,7 +13,7 @@ const AllDonation = () => {
     key: null,
     direction: "asc",
   });
-  const axios = useAxiosSecure()
+  const axios = useAxiosSecure();
 
   useEffect(() => {
     axios
@@ -46,9 +47,7 @@ const AllDonation = () => {
           return direction === "asc" ? dateA - dateB : dateB - dateA;
         } else {
           // For quantity or other numeric values
-          return direction === "asc"
-            ? a[key] - b[key]
-            : b[key] - a[key];
+          return direction === "asc" ? a[key] - b[key] : b[key] - a[key];
         }
       });
       return sortedDonations;
@@ -58,15 +57,18 @@ const AllDonation = () => {
   const StatusBadge = ({ status }) => {
     const statusConfig = {
       "Picked Up": {
-        color: "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200",
+        color:
+          "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-200",
         icon: <FiPackage className="mr-1" />,
       },
       Requested: {
-        color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200",
+        color:
+          "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-200",
         icon: <FiClock className="mr-1" />,
       },
       Verified: {
-        color: "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200",
+        color:
+          "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-200",
         icon: <FiFilter className="mr-1" />,
       },
     };
@@ -88,6 +90,9 @@ const AllDonation = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <Helmet>
+        <title> All Donation || FoodCycle</title>
+      </Helmet>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           Available Food Donations
@@ -123,8 +128,6 @@ const AllDonation = () => {
             )}
             Sort by Quantity
           </button>
-
-        
         </div>
       </div>
 
@@ -167,34 +170,44 @@ const AllDonation = () => {
 
                 <div className="space-y-2 text-sm">
                   <div className="flex">
-                    <span className="text-gray-500 dark:text-gray-400 w-24">Restaurant:</span>
+                    <span className="text-gray-500 dark:text-gray-400 w-24">
+                      Restaurant:
+                    </span>
                     <span className="font-medium text-gray-700 dark:text-gray-200">
                       {donation.restaurantName}
                     </span>
                   </div>
                   <div className="flex">
-                    <span className="text-gray-500 dark:text-gray-400 w-24">Location:</span>
+                    <span className="text-gray-500 dark:text-gray-400 w-24">
+                      Location:
+                    </span>
                     <span className="font-medium text-gray-700 dark:text-gray-200">
                       {donation.location}
                     </span>
                   </div>
                   {donation.charityName && (
                     <div className="flex">
-                      <span className="text-gray-500 dark:text-gray-400 w-24">Charity:</span>
+                      <span className="text-gray-500 dark:text-gray-400 w-24">
+                        Charity:
+                      </span>
                       <span className="font-medium text-indigo-600 dark:text-indigo-400">
                         {donation.charityName}
                       </span>
                     </div>
                   )}
                   <div className="flex">
-                    <span className="text-gray-500 dark:text-gray-400 w-24">Quantity:</span>
+                    <span className="text-gray-500 dark:text-gray-400 w-24">
+                      Quantity:
+                    </span>
                     <span className="font-medium text-gray-700 dark:text-gray-200">
                       {donation.quantity} servings
                     </span>
                   </div>
                   {donation.pickupTime && (
                     <div className="flex">
-                      <span className="text-gray-500 dark:text-gray-400 w-24">Pickup By:</span>
+                      <span className="text-gray-500 dark:text-gray-400 w-24">
+                        Pickup By:
+                      </span>
                       <span className="font-medium text-gray-700 dark:text-gray-200">
                         {donation.pickupTime}
                       </span>

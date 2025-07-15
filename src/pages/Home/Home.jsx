@@ -6,22 +6,21 @@ import Divider from "../../components/Divider/Divider";
 import ImpactSection from "./ExtraSection/ImpactSection";
 import CommunitySection from "./ExtraSection/CommunitySection";
 import NewsletterSection from "./ExtraSection/NewsletterSection";
-import { FiArrowUp, FiArrowDown} from "react-icons/fi";
+import { FiArrowUp, FiArrowDown } from "react-icons/fi";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
+  const [isAtTop, setIsAtTop] = useState(true);
 
-    const [isAtTop, setIsAtTop] = useState(true);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsAtTop(window.scrollY < 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-   useEffect(() => {
-      const handleScroll = () => {
-        setIsAtTop(window.scrollY < 100);
-      };
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-  
-
-    const handleScrollClick = () => {
+  const handleScrollClick = () => {
     if (isAtTop) {
       window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     } else {
@@ -31,6 +30,9 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title> Home || FoodCycle</title>
+      </Helmet>
       <BannerSlider />
       <Divider />
       <FeaturedDonations />
