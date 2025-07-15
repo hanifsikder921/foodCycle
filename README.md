@@ -1,12 +1,104 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🌱 FoodCycle - A Local Food Waste Reduction Platform
 
-Currently, two official plugins are available:
+**Live Site:** [https://foodcycle-cc2df.web.app/](https://foodcycle-cc2df.web.app/)  
+**Admin Login:**  
+- **Username (Email):** admin@gmail.com 
+- **Password:** 123!He23
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+FoodCycle is a full-stack MERN-based donation management platform that connects **Restaurants**, **Charities**, and **General Users** to reduce food waste and feed communities in need. The platform offers seamless donation, request, and approval workflows with real-time role-based dashboards.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Key Features
+
+1. 🔐 **Role-based Authentication & Authorization**
+   - Supports 4 distinct roles: `User`, `Restaurant`, `Charity`, and `Admin` using Firebase Authentication and JWT.
+
+2. 📦 **Donation Management**
+   - Restaurants can create, update, and manage food donation listings including quantity, pickup time, and status.
+
+3. 📝 **Donation Requests**
+   - Charities can view available donations and submit detailed requests with proposed pickup time and description.
+
+4. ✅ **Admin Panel**
+   - Admin can manage all users, approve role change requests, and feature verified donations for homepage visibility.
+
+5. 💳 **Stripe Payment Integration**
+   - Charities can securely make payments for selected services or premium features using Stripe Checkout.
+
+6. 📊 **Real-time Dashboards**
+   - Each role sees a customized dashboard with statistics, recent actions, and relevant control panels.
+
+7. 🌙 **Dark & Light Mode Toggle**
+   - TailwindCSS + DaisyUI based elegant UI with smooth dark/light theme switcher.
+
+8. 🔍 **Search, Filter & Sort Donations**
+   - Users can easily browse donations using filters by location, status, and sort by quantity or pickup time.
+
+9. 📅 **Pickup Time Validator**
+   - Requests must propose pickup time within ±2 hours of the restaurant's specified time.
+
+10. 🌐 **Fully Responsive Design**
+    - Optimized for mobile, tablet, and desktop screens.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, TailwindCSS, DaisyUI, Axios, React Router, Framer Motion  
+- **Backend:** Node.js, Express.js, MongoDB (Mongoose), JWT  
+- **Authentication:** Firebase  
+- **Payment:** Stripe  
+- **Deployment:** Vercel (Client), Render (Server), Firebase Hosting
+
+---
+
+## 🚀 Getting Started (Local Setup)
+
+1. Clone the project:
+   ```bash
+   git clone https://github.com/your-username/foodcycle.git
+   cd foodcycle
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Setup `.env` file in root:
+   ```env
+   VITE_API_URL=https://your-api-url.com
+   VITE_FIREBASE_API_KEY=your-firebase-key
+   ```
+
+4. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📁 Project Structure
+
+```
+/src
+  /components     → Reusable UI components
+  /pages          → Page-level components for routes
+  /hooks          → Custom React hooks (e.g., useAuth, useAxiosSecure)
+  /routes         → Protected & Public route handling
+  /context        → Global context providers
+```
+
+---
+
+## 🙌 Contributions
+
+Pull requests are welcome! If you have suggestions or feature requests, feel free to open an issue.
+
+---
+
+## 📄 License
+
+MIT © 2025 [Hanif Sikder](https://github.com/hanif-sikder)
