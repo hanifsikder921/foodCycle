@@ -2,10 +2,10 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import Loading from "../Loading/Loading";
-import Logo from "../../assets/logo.png";
 import useAuth from "../../hooks/useAuth";
 import FoodCycleLogo from "../shared/FoodCycleLogo";
 import { IoMdMenu } from "react-icons/io";
+
 
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
@@ -49,7 +49,7 @@ const Navbar = () => {
         { path: "/", label: "Home" },
         { path: "/about", label: "About" },
         { path: "/contact", label: "contact" },
-        ...(user ? [{ path: "/allDonation", label: "All Donation" }] : []),
+        { path: "/allDonation", label: "All Donation" },
         ...(user ? [{ path: "/dashboard", label: "Dashboard" }] : []),
       ].map(({ path, label }) => (
         <NavLink
@@ -73,6 +73,7 @@ const Navbar = () => {
           Login
         </Link>
       )}
+     
     </div>
   );
 

@@ -6,7 +6,7 @@ const FeaturedDonationsCard = ({ donation }) => {
     donation;
 
   return (
-    <div className="rounded-xl shadow-md bg-white dark:bg-gray-800 p-4 hover:shadow-lg transition ">
+    <div className="rounded-xl shadow-md bg-white dark:bg-gray-800 p-4 hover:shadow-lg transition flex flex-col">
       <div className="w-full h-48 overflow-hidden rounded-md">
         <img
           src={image}
@@ -44,7 +44,7 @@ const FeaturedDonationsCard = ({ donation }) => {
 
       <Link
         to={`/donationDetails/${_id}`}
-        className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+        className="inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition mt-auto"
       >
         View Details
       </Link>

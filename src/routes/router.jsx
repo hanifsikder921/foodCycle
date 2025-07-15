@@ -37,6 +37,11 @@ import AdminRoute from "./AdminRoute";
 import RestaurentRoute from "./RestaurentRoute";
 import CharityRoute from "./CharityRoute";
 import UserRoutes from "./UserRoutes";
+import HowItWorks from "../components/Footer/HowItWorks";
+import ErrorPage from "../pages/Forbidden/ErrorPage";
+import PrivacyPolicy from "../components/Footer/PrivacyPolicy";
+import TermsAndServices from "../components/Footer/TermsAndServices";
+
 
 const router = createBrowserRouter([
   {
@@ -52,9 +57,22 @@ const router = createBrowserRouter([
         Component: About,
       },
       {
+        path:"/how-it-works",
+        Component:HowItWorks
+      },
+      {
         path: "/contact",
         Component: ContactUs,
       },
+      {
+        path: "/privacy",
+        Component: PrivacyPolicy,
+      },
+      {
+        path: "/terms",
+        Component: TermsAndServices,
+      },
+      
       {
         path: "/forbidden",
         Component: Forbidden,
@@ -280,6 +298,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:"*",
+    Component:ErrorPage
+  }
 ]);
 
 export default router;

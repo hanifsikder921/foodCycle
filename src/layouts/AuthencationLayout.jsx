@@ -5,7 +5,7 @@ import Eating from "../assets/eating.svg";
 
 const AuthencationLayout = () => {
   return (
-    <div className=" md:w-11/12 mx-auto ">
+    <div className=" md:w-11/12 mx-auto">
       <div className="mt-5 w-11/12 mx-auto md:w-full">
         <Link
           to="/"

@@ -17,6 +17,8 @@ import { MdRestaurant } from "react-icons/md";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import useUserRole from "../../../../hooks/useUserRole";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const DonationDetails = () => {
   const { id } = useParams();
@@ -92,6 +94,7 @@ const DonationDetails = () => {
         restaurantName: donation.restaurantName,
         charityName: user.displayName,
         charityEmail: user.email,
+        charityImage:user?.photoURL,
         restaurantEmail:donation.restaurantEmail,
         foodType:donation.foodType,
         quantity:donation.quantity,
@@ -515,36 +518,41 @@ const DonationDetails = () => {
                 </span>
                 <span className="label-text-alt text-red-500">*</span>
               </label>
-              <input
-                type="time"
-                className={`input input-bordered w-full dark:bg-gray-700 dark:text-white ${
-                  requestErrors.pickupTime ? "input-error" : ""
-                }`}
-                {...registerRequest("pickupTime", {
-                  required: "Pickup time is required",
-                  validate: (value) => {
-                    const donationDateTime = new Date(
-                      `${pickupDate} ${pickupTime}`
-                    );
-                    const proposedDateTime = new Date(`${pickupDate} ${value}`);
+              <div className="relative">
+                <input
+                  type="time"
+                  className={`input input-bordered w-full dark:bg-gray-700 dark:text-white ${
+                    requestErrors.pickupTime ? "input-error" : ""
+                  }`}
+                  {...registerRequest("pickupTime", {
+                    required: "Pickup time is required",
+                    validate: (value) => {
+                      const donationDateTime = new Date(
+                        `${pickupDate} ${pickupTime}`
+                      );
+                      const proposedDateTime = new Date(`${pickupDate} ${value}`);
 
-                    // Check if proposed time is within ±2 hours of donation time
-                    const minTime = new Date(donationDateTime);
-                    minTime.setHours(minTime.getHours() - 2);
+                      // Check if proposed time is within ±2 hours of donation time
+                      const minTime = new Date(donationDateTime);
+                      minTime.setHours(minTime.getHours() - 2);
 
-                    const maxTime = new Date(donationDateTime);
-                    maxTime.setHours(maxTime.getHours() + 2);
+                      const maxTime = new Date(donationDateTime);
+                      maxTime.setHours(maxTime.getHours() + 2);
 
-                    if (
-                      proposedDateTime < minTime ||
-                      proposedDateTime > maxTime
-                    ) {
-                      return "Pickup time should be within 2 hours of the donation's specified time";
-                    }
-                    return true;
-                  },
-                })}
-              />
+                      if (
+                        proposedDateTime < minTime ||
+                        proposedDateTime > maxTime
+                      ) {
+                        return "Pickup time should be within 2 hours of the donation's specified time";
+                      }
+                      return true;
+                    },
+                  })}
+                />
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <IoIosTime className="text-gray-400" />
+                </div>
+              </div>
               {requestErrors.pickupTime && (
                 <span className="text-red-500 text-sm">
                   {requestErrors.pickupTime.message}
@@ -570,6 +578,8 @@ const DonationDetails = () => {
           </form>
         </div>
       </dialog>
+
+      
 
       {/* Review Modal */}
       <dialog className={`modal ${reviewModal ? "modal-open" : ""}`}>

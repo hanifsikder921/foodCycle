@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import useAxios from "../../hooks/useAxios";
 import { Link } from "react-router";
 import { FiSearch, FiFilter, FiClock, FiPackage } from "react-icons/fi";
 import { FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const AllDonation = () => {
   const [donations, setDonations] = useState([]);
@@ -12,7 +12,7 @@ const AllDonation = () => {
     key: null,
     direction: "asc",
   });
-  const axios = useAxios();
+  const axios = useAxiosSecure()
 
   useEffect(() => {
     axios
