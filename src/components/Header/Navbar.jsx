@@ -6,7 +6,9 @@ import useAuth from "../../hooks/useAuth";
 import FoodCycleLogo from "../shared/FoodCycleLogo";
 import { IoMdMenu } from "react-icons/io";
 
-const Navbar = () => {
+import { FaSun, FaMoon } from "react-icons/fa";
+
+const Navbar = ({ handleThemeToggle, theme }) => {
   const { user, logOut, loading } = useAuth();
 
   const navigate = useNavigate();
@@ -79,6 +81,9 @@ const Navbar = () => {
           Login
         </Link>
       )}
+      <button onClick={handleThemeToggle} className="btn btn-ghost">
+        {theme === "light" ? <FaMoon /> : <FaSun />}
+      </button>
     </div>
   );
 

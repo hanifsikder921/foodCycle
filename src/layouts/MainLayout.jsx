@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router";
 import Navbar from "../components/Header/Navbar";
 import Footer from "../components/Footer/Footer";
 
 const MainLayout = () => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const handleThemeToggle = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
     <div className="min-h-screen flex flex-col dark:bg-gray-700">
       <header className=" dark:bg-gray-800 sticky top-0 z-40 bg-base-300">
-        <Navbar />
+        <Navbar handleThemeToggle={handleThemeToggle} theme={theme} />
       </header>
 
       <main className=" w-11/12 mx-auto flex-grow md:my-8 my-2">

@@ -6,7 +6,7 @@ const FeaturedDonationsCard = ({ donation }) => {
     donation;
 
   return (
-    <div className="rounded-xl shadow-md bg-white dark:bg-gray-800 p-4 hover:shadow-lg transition flex flex-col">
+    <div className="rounded-xl shadow-md bg-white  dark:bg-gray-800 p-4 hover:shadow-lg transition flex flex-col">
       <div className="w-full h-48 overflow-hidden rounded-md">
         <img
           src={image}
