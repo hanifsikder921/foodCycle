@@ -142,20 +142,6 @@ const ReviewsSection = () => {
           ))}
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 text-center"
-        >
-          <button className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg">
-            Share Your Experience
-          </button>
-          <p className="mt-4 text-gray-500 dark:text-gray-400">
-            Over 200+ positive reviews from our community
-          </p>
-        </motion.div>
       </div>
     </section>
   );
