@@ -18,8 +18,7 @@ const Footer = () => {
           <div className="max-w-xs">
             <FoodCycleLogo />
             <p className="mt-2 text-sm">
-              Transforming food waste into sustainable solutions for communities
-              worldwide.
+              Transforming food waste into sustainable solutions for communities worldwide.
             </p>
           </div>
 
@@ -81,7 +80,6 @@ const Footer = () => {
                     Terms of Service
                   </Link>
                 </li>
-              
               </ul>
             </div>
 
@@ -100,7 +98,7 @@ const Footer = () => {
 
                 <div className="flex gap-4 mt-2">
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/hanifsikder922"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary transition-colors text-xl"
@@ -108,7 +106,7 @@ const Footer = () => {
                     <FaFacebook />
                   </a>
                   <a
-                    href="https://twitter.com"
+                    href="https://x.com/hanifsikder920"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary transition-colors text-xl"
@@ -124,7 +122,7 @@ const Footer = () => {
                     <FaInstagram />
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/hanifsikder920"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-primary transition-colors text-xl"

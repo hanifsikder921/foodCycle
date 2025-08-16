@@ -6,7 +6,7 @@ import Footer from "../components/Footer/Footer";
 const MainLayout = () => {
   return (
     <div className="min-h-screen flex flex-col dark:bg-gray-700">
-      <header className=" dark:bg-gray-800 sticky top-0 z-10 bg-base-300">
+      <header className=" dark:bg-gray-800 sticky top-0 z-40 bg-base-300">
         <Navbar />
       </header>
 
