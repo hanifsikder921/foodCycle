@@ -6,6 +6,7 @@ import Divider from "../../components/Divider/Divider";
 import ImpactSection from "./ExtraSection/ImpactSection";
 import CommunitySection from "./ExtraSection/CommunitySection";
 import NewsletterSection from "./ExtraSection/NewsletterSection";
+import ServiceArea from "./ExtraSection/ServiceArea";
 import { FiArrowUp, FiArrowDown } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
 
@@ -44,6 +45,8 @@ const Home = () => {
       <CommunitySection />
       <Divider />
       <NewsletterSection />
+      <Divider />
+      <ServiceArea />
       <Divider />
       <button
         onClick={handleScrollClick}

@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
 import { FaRecycle, FaHandsHelping, FaLeaf, FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const BannerSlider = () => {
     const slides = [
@@ -79,9 +80,9 @@ const BannerSlider = () => {
                                 <p className="text-lg md:text-xl mb-8 text-gray-100 max-w-2xl mx-auto">
                                     {slide.text}
                                 </p>
-                                <button className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                <Link to='/about' className="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg">
                                     {slide.cta}
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </SwiperSlide>

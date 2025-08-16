@@ -43,11 +43,11 @@ const Navbar = () => {
   const menu = (
     <div className="flex flex-col md:flex-row md:gap-10 gap-3 md:items-center">
       {[
-        { path: "/", label: "Home" },
-        { path: "/about", label: "About" },
-        { path: "/contact", label: "contact" },
-        { path: "/allDonation", label: "All Donation" },
-        ...(user ? [{ path: "/dashboard", label: "Dashboard" }] : []),
+        { path: '/', label: 'Home' },
+        { path: '/about', label: 'About' },
+        { path: '/contact', label: 'contact' },
+        ...(user ? [{ path: '/allDonation', label: 'All Donation' }] : []),
+        ...(user ? [{ path: '/dashboard', label: 'Dashboard' }] : []),
       ].map(({ path, label }) => (
         <NavLink
           key={path}
@@ -55,8 +55,8 @@ const Navbar = () => {
           className={({ isActive }) =>
             `font-semibold transition-colors duration-300 text-base-content relative z-10 ${
               isActive
-                ? "px-4 py-2 rounded-md border dark:border-amber-300"
-                : " hover:text-blue-500"
+                ? 'px-4 py-2 rounded-md border dark:border-amber-300'
+                : ' hover:text-blue-500'
             } dark:text-amber-50`
           }
         >
@@ -68,7 +68,11 @@ const Navbar = () => {
           <button onClick={handleLogout} className="btn btn-warning">
             Logout
           </button>
-          <img title={user?.displayName} src={user?.photoURL} className="w-12 h-12 rounded-full"></img>
+          <img
+            title={user?.displayName}
+            src={user?.photoURL}
+            className="w-12 h-12 rounded-full"
+          ></img>
         </div>
       ) : (
         <Link to="/login" className="btn btn-primary">
