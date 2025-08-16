@@ -81,9 +81,7 @@ const Navbar = ({ handleThemeToggle, theme }) => {
           Login
         </Link>
       )}
-      <button onClick={handleThemeToggle} className="btn btn-ghost">
-        {theme === "light" ? <FaMoon /> : <FaSun />}
-      </button>
+    
     </div>
   );
 
