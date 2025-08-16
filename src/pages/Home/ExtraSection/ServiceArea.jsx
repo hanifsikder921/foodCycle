@@ -42,8 +42,8 @@ const ServiceArea = () => {
     <section className="py-16 bg-gray-50 dark:bg-gray-900 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-white sm:text-5xl">Our Service Coverage</h2>
-          <p className="mt-4 text-xl text-gray-100 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-extrabold dark:text-white sm:text-5xl">Our Service Coverage</h2>
+          <p className="mt-4 text-xl dark:text-gray-100 max-w-3xl mx-auto">
             Currently serving key areas in Dhaka with plans to expand.
             <span className="block mt-2 text-orange-400 font-medium">
               <FaMapMarkerAlt className="inline mr-1" /> 3 active locations | 500+ meals served
