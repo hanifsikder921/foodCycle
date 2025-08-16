@@ -9,6 +9,7 @@ import NewsletterSection from "./ExtraSection/NewsletterSection";
 import ServiceArea from "./ExtraSection/ServiceArea";
 import { FiArrowUp, FiArrowDown } from "react-icons/fi";
 import { Helmet } from "react-helmet-async";
+import ReviewsSection from "./ExtraSection/ReviewsSection";
 
 const Home = () => {
   const [isAtTop, setIsAtTop] = useState(true);
@@ -45,6 +46,8 @@ const Home = () => {
       <CommunitySection />
       <Divider />
       <NewsletterSection />
+      <Divider />
+      <ReviewsSection />
       <Divider />
       <ServiceArea />
       <Divider />
